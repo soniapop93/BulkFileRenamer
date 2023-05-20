@@ -2,18 +2,15 @@
 {
     public class File
     {
-        public string oldFileName { get; set; }
-        public string oldFileExtension { get; set; }
-
+        public string fileName { get; set; }
+        public string fileExtension { get; set; }
         public string newFileName { get; set; }
         public string newFileExtension { get; set; }
 
-        public File(string oldFileName, string oldFileExtension, string newFileName, string newFileExtension)
+        public File(string fileName, string fileExtension)
         {
-            this.oldFileName = oldFileName;
-            this.oldFileExtension = oldFileExtension;
-            this.newFileName = newFileName;
-            this.newFileExtension = newFileExtension;
+            this.fileName = fileName;
+            this.fileExtension = fileExtension;
         }
     }
 }
