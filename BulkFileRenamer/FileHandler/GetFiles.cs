@@ -20,7 +20,10 @@
                 FileInfo file = new FileInfo(files[i]);
                 string fileExtension = file.Extension;
 
-                extensions.Add(fileExtension);
+                if (!extensions.Contains(fileExtension))
+                {
+                    extensions.Add(fileExtension);
+                }
             }
             return extensions;
         }
