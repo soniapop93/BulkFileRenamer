@@ -9,14 +9,20 @@
             return files;
         }
 
-        public void getFileExtensionsAvailableInFolder(string folderPath)
+        public List<string> getFileExtensionsAvailableInFolder(string folderPath)
         {
+            List<string> extensions = new List<string>;
+
             string[] files = Directory.GetFiles(folderPath);
 
             for(int i = 0; i < files.Length; i++)
             {
-               
+                FileInfo file = new FileInfo(files[i]);
+                string fileExtension = file.Extension;
+
+                extensions.Add(fileExtension);
             }
+            return extensions;
         }
     }
 }

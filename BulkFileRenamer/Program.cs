@@ -23,12 +23,31 @@ public class Program
 
         if (!String.IsNullOrEmpty(pathInput))
         {
+
+            List<string> fileExtensionsAvailable = getFiles.getFileExtensionsAvailableInFolder(pathInput);
+
+            if (fileExtensionsAvailable.Count > 0)
+            {
+                Console.WriteLine("Available extensions in the folder: \n {0}", String.Join("\n" ,fileExtensionsAvailable));
+            }
+            else
+            {
+                Console.WriteLine("There are no files available in folder!");
+            }
+
             Console.WriteLine("Please add the file extension of the files you want to rename: ");
             string fileExtensionInput = userInput.getUserInput();
 
             if(!String.IsNullOrEmpty(fileExtensionInput))
             {
-
+                if (fileExtensionsAvailable.Contains(fileExtensionInput))
+                {
+                    //TODO: implement logic 
+                }
+                else
+                {
+                    Console.WriteLine("You didn't add an extension that is available in the folder");
+                }
             }
             else
             {
