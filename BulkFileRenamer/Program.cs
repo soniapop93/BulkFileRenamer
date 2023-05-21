@@ -17,6 +17,7 @@ public class Program
 
         UserInput userInput = new UserInput();
         GetFiles getFiles = new GetFiles();
+        RenameFiles renameFiles = new RenameFiles();
 
         Console.WriteLine("Please insert the path from where do you want to rename all the files: ");
         string pathInput = userInput.getUserInput();
@@ -42,7 +43,32 @@ public class Program
             {
                 if (fileExtensionsAvailable.Contains(fileExtensionInput))
                 {
-                    //TODO: implement logic 
+                    string[] files = getFiles.getFilesFromFolder(pathInput, "*" + fileExtensionInput);
+
+                    if (files.Length > 0)
+                    {
+                        Console.WriteLine("Please add the new path where you want to save the files renamed: ");
+                        string newPath = userInput.getUserInput();
+
+                        if (!String.IsNullOrEmpty(newPath))
+                        {
+                            string newFileName = userInput.getUserInput();
+
+                            if (!String.IsNullOrEmpty(newFileName))
+                            {
+                                renameFiles.bulkRenameFiles(files, newPath, newFileName, fileExtensionInput);
+                            }
+                            else
+                            {
+                                Console.WriteLine("File name you've added is null or empty");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("The path added is not correct");
+                        }
+                    }
+                    
                 }
                 else
                 {
@@ -58,7 +84,6 @@ public class Program
         {
             Console.WriteLine("Path you've added is null or empty");
         }
-
 
         Console.WriteLine("------------------------ SCRIPT FINISHED ------------------------");
     }

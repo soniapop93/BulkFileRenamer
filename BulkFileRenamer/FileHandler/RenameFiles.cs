@@ -17,8 +17,12 @@ namespace BulkFileRenamer.FileHandler
 
                 if (file.Exists)
                 {
-                    string fileName = nameFile(fileNewName, fileExtension, index.ToString());
-                    file.MoveTo(newPath + "\\" + fileName);
+                    string fileName = nameFile(fileNewName, fileExtension.Replace(".", ""), index.ToString());
+
+                    if (!String.IsNullOrEmpty(fileName))
+                    {
+                        file.MoveTo(newPath + "\\" + fileName);
+                    }
                 }
                 index++;
             }
