@@ -11,7 +11,7 @@
 
         public List<string> getFileExtensionsAvailableInFolder(string folderPath)
         {
-            List<string> extensions = new List<string>;
+            List<string> extensions = new List<string>();
 
             string[] files = Directory.GetFiles(folderPath);
 
