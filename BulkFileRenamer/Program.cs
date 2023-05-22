@@ -52,16 +52,10 @@ public class Program
 
                         if (!String.IsNullOrEmpty(newPath))
                         {
+                            Console.WriteLine("Please add the new name of the files: ");
                             string newFileName = userInput.getUserInput();
 
-                            if (!String.IsNullOrEmpty(newFileName))
-                            {
-                                renameFiles.bulkRenameFiles(files, newPath, newFileName, fileExtensionInput);
-                            }
-                            else
-                            {
-                                Console.WriteLine("File name you've added is null or empty");
-                            }
+                            renameFiles.bulkRenameFiles(files, newPath, newFileName, fileExtensionInput);
                         }
                         else
                         {

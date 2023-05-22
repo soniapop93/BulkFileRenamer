@@ -34,13 +34,13 @@ namespace BulkFileRenamer.FileHandler
 
             if (fileNewName != null && fileExtension != null)
             {
-                if (fileNewName.Equals(""))
+                if (String.IsNullOrEmpty(fileNewName))
                 {
                     fileName = fileNumber + "." + fileExtension;
                 }
                 else
                 {
-                    fileExtension = fileNewName + "_" + fileNumber + "." + fileExtension;
+                    fileName = fileNewName + "_" + fileNumber + "." + fileExtension;
                 }
             }
             return fileName;
