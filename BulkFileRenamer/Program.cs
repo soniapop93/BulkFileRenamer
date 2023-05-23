@@ -8,6 +8,13 @@ public class Program
         /*
            =============================================================
            =============================================================
+            Bulk File Renamer
+
+            [X] Takes input path from user where the files are stored
+            [X] Checks the extensions available in the path and displays them
+            [X] Asks user which extension file wants to rename
+            [X] Takes input path from user where the files wants to be moved
+            [X] If the added path doesn't exist, will create it
             
            =============================================================
            =============================================================

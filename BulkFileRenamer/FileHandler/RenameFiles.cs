@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BulkFileRenamer.FileHandler
+﻿namespace BulkFileRenamer.FileHandler
 {
     public class RenameFiles
     {
         public void bulkRenameFiles(string[] files, string newPath, string fileNewName, string fileExtension)
         {
             int index = 1;
+
             for (int i = 0;i < files.Length; i++)
             {
                 FileInfo file = new FileInfo(files[i]); 
@@ -19,7 +14,9 @@ namespace BulkFileRenamer.FileHandler
                 {
                     string fileName = nameFile(fileNewName, fileExtension.Replace(".", ""), index.ToString());
 
-                    if (!String.IsNullOrEmpty(fileName))
+                    bool pathExists = folderExists(newPath);
+
+                    if (!String.IsNullOrEmpty(fileName) && pathExists)
                     {
                         file.MoveTo(newPath + "\\" + fileName);
                     }
@@ -44,6 +41,18 @@ namespace BulkFileRenamer.FileHandler
                 }
             }
             return fileName;
+        }
+
+        private bool folderExists(string newPath)
+        {
+            bool exists = Directory.Exists(newPath);
+
+            if (!exists)
+            {
+                Directory.CreateDirectory(newPath);
+                exists = true;
+            }
+            return exists;
         }
     }
 }
